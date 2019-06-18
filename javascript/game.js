@@ -13,7 +13,7 @@ $('button').on('click', function() {
       })
         .then(function(response) {
             let results = response.data;
-
+            console.log(response)
             for (let i = 0; i < results.length; i++) {
                 if (results[i].rating !== "r") {
                     let gifDiv = $("<div>");
@@ -26,7 +26,8 @@ $('button').on('click', function() {
                     gifDiv.append(p);
                     gifDiv.append(personImage);
 
-                    $('gifs-section').prepend(gifDiv);
+                    $('#gifs-section').prepend(gifDiv);
+
                 }
             }
         });
