@@ -6,7 +6,7 @@ let topics = [
   "Amy Poehler",
   "Kristen Wiig",
   "Cecily Strong",
-  "Aidy Bryan",
+  "Aidy Bryant",
   "Nasim Pedrad",
   "Melissa Villasenor"
 ];
@@ -42,9 +42,11 @@ $('#add-comedian').on('click', function(event) {
 
 newButtons();
 
+$(document).on("click", ".comedian", displayComedians);
 
 
-$('button').on('click', function() {
+function displayComedians() {
+    $('button').on('click', function() {
     let person = $(this).attr("data-name");
     let queryURL =
       "https://api.giphy.com/v1/gifs/search?q=" +
@@ -74,4 +76,4 @@ $('button').on('click', function() {
                 }
             }
         });
-});
+})};
