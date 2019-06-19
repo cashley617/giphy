@@ -1,8 +1,52 @@
 
+
+let topics = [
+  "Kate McKinnon",
+  "Tina Fey",
+  "Amy Poehler",
+  "Kristen Wiig",
+  "Cecily Strong",
+  "Aidy Bryan",
+  "Nasim Pedrad",
+  "Melissa Villasenor"
+];
+
+
+function newButtons() {
+
+    $("#new-buttons").empty();
+
+    for (let x = 0; x < topics.length; x++) {
+        let b = $("<button>");
+        
+        b.addClass("comedian");
+        b.attr("data-name", topics[x]);
+        b.text(topics[x]);
+        $("#new-buttons").append(b);
+    }
+};
+
+
+$('#add-comedian').on('click', function(event) {
+
+    event.preventDefault();
+    
+    let comedians = $("#comedian-input").val().trim();
+
+    $("#comedian-input").val(" ");
+
+    topics.push(comedians);
+
+    newButtons();
+});
+
+newButtons();
+
+
+
 $('button').on('click', function() {
-    let person = $(this).attr('data-person');
+    let person = $(this).attr("data-name");
     let queryURL =
-        // "https://api.giphy.com/v1/gifs/search?q=+tinafey+%22&api_key=lPvbcInOTDVzHEYZP7FbPidwvTsTvjoH&limit=10"
       "https://api.giphy.com/v1/gifs/search?q=" +
       person +
       "&api_key=lPvbcInOTDVzHEYZP7FbPidwvTsTvjoH&limit=10";
@@ -13,7 +57,7 @@ $('button').on('click', function() {
       })
         .then(function(response) {
             let results = response.data;
-            console.log(response)
+
             for (let i = 0; i < results.length; i++) {
                 if (results[i].rating !== "r") {
                     let gifDiv = $("<div>");
@@ -27,7 +71,6 @@ $('button').on('click', function() {
                     gifDiv.append(personImage);
 
                     $('#gifs-section').prepend(gifDiv);
-
                 }
             }
         });
