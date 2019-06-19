@@ -1,10 +1,5 @@
-/**
- * Alex's sample code
- */
 
 const gifObj = {};
-
-// End Sample
 
 let topics = [
   "Kate McKinnon",
@@ -55,27 +50,6 @@ $(document).on("click", ".gif-image", function(e) {
 
   currentGif.isActive ? $(this).attr("src", currentGif.stillURL) : $(this).attr("src", currentGif.animatedURL);
   currentGif.isActive = !currentGif.isActive;
-
-  // if (currentGif.isActive) {
-  //   currentGif.isActive = false;
-  //   $(this).attr('src', currentGif.stillURL);
-  // } else {
-  //   currentGif.isActive = true;
-  //   $(this).attr('src', currentGif.animatedURL);
-  // }
-
-  /**
-   * HTML STATE MANAGEMENT
-   */
-//   if (currentDataset.state === "still") {
-//     console.log(currentDataset.animated);
-//     $(this).attr("src", currentDataset.animated);
-//     $(this).attr("data-state", "animated");
-//     console.log(this);
-//   } else {
-//     $(this).attr("src", currentDataset.still);
-//     $(this).attr("data-state", "still");
-//   }
 });
 
 function displayComedians() {
@@ -109,16 +83,6 @@ function displayComedians() {
           personImage.attr("src", currentResult.images.fixed_height_still.url);
           personImage.attr("data-gif_id", currentResult.id);
 
-          //   personImage.attr("data-state", "still");
-          //   personImage.attr(
-          //     "data-still",
-          //     results[i].images.fixed_height_still.url
-          //   );
-          //   personImage.attr("data-animated", results[i].images.fixed_height.url);
-          // store links on HTML elements via attributes
-
-          // create an array and push each gif into it, grab by id
-
           gifDiv.append(p);
           gifDiv.append(personImage);
 
@@ -127,4 +91,4 @@ function displayComedians() {
       }
     });
   });
-}
+};
